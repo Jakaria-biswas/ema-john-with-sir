@@ -6,6 +6,8 @@ import Shop from './components/Shop/Shop';
 import Orders from './components/Orders/Orders';
 import Inventory from './components/Inventory/Inventory';
 import { productsAndCartLoader } from './loaders/productsAndCartLoader';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 
 function App() {
@@ -31,6 +33,14 @@ function App() {
         {
           path:'about',
           element:<About></About>
+        },
+        {
+          path:"login",
+          element:<Login></Login>
+        },
+        {
+          path:"register",
+          element:<Register></Register>
         }
       ]
     },
