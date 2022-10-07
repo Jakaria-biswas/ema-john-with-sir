@@ -6,6 +6,7 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [conformPassword, setConformPassword] = useState();
+    const [error, setError] = useState('');
 
     const handleEmail = event => {
         setEmail(event.target.value)
@@ -19,6 +20,11 @@ const Register = () => {
 
     const handleRegister = event => {
          event.preventDefault();
+
+         if(password !== conformPassword){
+              setError("password tow did not match");
+              return;
+         }
 
          console.log("email - ", email)
          console.log("password - ", password)
@@ -44,6 +50,7 @@ const Register = () => {
                 <div className="input-group">
                     <label htmlFor="conform password">Conform password</label>
                     <input onBlur={handleConformPassword} type="password" name="conform password" />
+                    <p>{error}</p>
                 </div>
                 <div className="submit-btn">
                     <input type="submit" value="Register" />
