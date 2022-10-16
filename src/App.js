@@ -8,6 +8,8 @@ import Inventory from './components/Inventory/Inventory';
 import { productsAndCartLoader } from './loaders/productsAndCartLoader';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import RequireAuth from './components/RequireAuth/RequireAuth';
+import Shipment from './components/Shipment/Shipment';
 
 
 function App() {
@@ -28,7 +30,11 @@ function App() {
         },
         {
           path: 'inventory',
-          element: <Inventory></Inventory>
+          element:<RequireAuth><Inventory></Inventory></RequireAuth>
+        },
+        {
+          path: 'shipment',
+          element:<RequireAuth><Shipment></Shipment></RequireAuth>
         },
         {
           path:'about',

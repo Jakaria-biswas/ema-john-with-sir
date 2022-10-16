@@ -1,61 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+
 import GoogleIcon from '../../images/google-brands.png'
+import useFirebase from '../hooks/useFirebase';
+
+
+
 const Register = () => {
-       
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [conformPassword, setConformPassword] = useState();
-    const [error, setError] = useState('');
 
-    const handleEmail = event => {
-        setEmail(event.target.value)
-    }
-    const handlePassword = event => {
-        setPassword(event.target.value)
-    }
-    const handleConformPassword = event => {
-        setConformPassword(event.target.value)
-    }
+   const {handleEmail,handlePassword, handleRegister, newUser} = useFirebase()
+    
+ console.log("from register",newUser)
 
-    const handleRegister = event => {
-         event.preventDefault();
-
-         if(password !== conformPassword){
-              setError("password tow did not match");
-              return;
-         }
-
-         console.log("email - ", email)
-         console.log("password - ", password)
-         console.log("conformPassword - ", conformPassword)
-         
-    }
-
-
-    return (
-        <div className='form-container'>
+    return (<div className='form-container'>
         <div>
             <h2 className='form-title'>Register</h2>
 
-            <form onSubmit={handleRegister}>
+            <form onSubmit={handleRegister} >
                 <div className="input-group">
                     <label htmlFor="email">Email</label>
-                    <input onBlur={handleEmail} type="text" name="email" />
+                    <input onChange={handleEmail}  type="text" name="email" required />
                 </div>
                 <div className="input-group">
                     <label htmlFor="password">Password</label>
-                    <input onBlur={handlePassword} type="password" name="password" />
+                    <input onChange={handlePassword}  type="password" name="password" required />
                 </div>
-                <div className="input-group">
-                    <label htmlFor="conform password">Conform password</label>
-                    <input onBlur={handleConformPassword} type="password" name="conform password" />
-                    <p>{error}</p>
-                </div>
+               
                 <div className="submit-btn">
                     <input type="submit" value="Register" />
                 </div>
-                
+
             </form>
             <p>
                 already have an account? <Link to="/login">Login</Link>
@@ -67,8 +41,7 @@ const Register = () => {
                 <button> <img src={GoogleIcon} alt="" /> continue with Google</button>
             </div>
         </div>
-    </div>
-    );
+    </div>);
 };
 
 export default Register;

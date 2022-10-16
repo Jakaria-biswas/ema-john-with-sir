@@ -59,9 +59,9 @@ const Shop = () => {
             </div>
             <div className="cart-container">
                 <Cart clearCart={clearCart} cart={cart}>
-                    <Link to="/orders">
+                     {cart.length > 0 &&   <Link to="/orders">
                         <button>Review Order</button>
-                    </Link>
+                    </Link>}
                 </Cart>
             </div>
         </div>

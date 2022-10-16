@@ -1,21 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import GoogleIcon from '../../images/google-brands.png'
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import auth from '../../firebase.in';
+import useFirebase from '../hooks/useFirebase';
+
 const Login = () => {
+
+         const {handleEmail, handlePassword, handleLogin, newUser } = useFirebase();
+         
+      
+
+        
+
+
     return (
         <div className='form-container'>
             <div>
                 <h2 className='form-title'>Login</h2>
 
-                <form>
+                <form onSubmit={handleLogin}>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
-                        <input type="text" name="email" />
+                        <input onChange={handleEmail} type="email" name="email" required />
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" />
+                        <input onChange={handlePassword}  type="password" name="password" required/>
                     </div>
                     <div className="submit-btn">
                         <input type="submit" value="Login" />

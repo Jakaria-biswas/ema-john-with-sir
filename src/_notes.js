@@ -4,6 +4,8 @@
  * 2. npm install
  * 3. create firebase.in.js file set sdk and export it
  * 4. enable which system we user for this project
+ * 5. create sign up and login components 
+ * 6. npm install --save react-firebase-hooks
  * 
 /
 
